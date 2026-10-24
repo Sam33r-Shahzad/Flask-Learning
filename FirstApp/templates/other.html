@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Other Page{% endblock %}
+
+{% block content %}
+    <h1>Filters Demo</h1>
+    <p>Original: {{ text_val }}</p>
+    <p>Upper: {{ text_val | upper }}</p>
+    <p>Custom Reverse: {{ text_val | reverse_string }}</p>
+    <p>Custom Repeat (3x): {{ text_val | repeat(3) }}</p>
+    <p>Custom Alternate Case: {{ text_val | alternate_case }}</p>
+{% endblock %}

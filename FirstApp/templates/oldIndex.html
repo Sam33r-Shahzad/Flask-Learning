@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block title %}Index Page{% endblock %} {% block
+content %}
+<h1>List Demonstration</h1>
+<ul>
+  {% for item in my_list %} {% if item == 30 %}
+  <li style="color: red">{{ item }}</li>
+  {% else %}
+  <li>{{ item }}</li>
+  {% endif %} {% endfor %}
+</ul>
+
+<!-- Dynamic URL Link -->
+<a href="{{ url_for('other') }}">Go to Other Page</a>
+{% endblock %}
