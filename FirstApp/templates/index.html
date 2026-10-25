@@ -1,86 +1,31 @@
-{% extends 'base.html' %} {% block title %}Home - Forms & Uploads{% endblock %}
+{% extends 'base.html' %}
+
 {% block content %}
-<!-- 1. Dummy Login Form -->
-<h2>Dummy Login</h2>
-<form method="POST" action="{{ url_for('index') }}">
-  <input type="text" name="username" placeholder="Username" /><br /><br />
-  <input type="password" name="password" placeholder="Password" /><br /><br />
-  <input type="submit" value="Login" />
+
+<h2>Status Message:</h2>
+<p style="color: blue; font-size: 18px;">{{ message }}</p>
+
+<hr>
+
+<h3>1. Session Operations</h3>
+<a href="{{ url_for('set_data') }}">Set Session Data</a> | 
+<a href="{{ url_for('get_data') }}">Get Session Data</a> | 
+<a href="{{ url_for('clear_session') }}">Clear Session Data</a>
+
+<hr>
+
+<h3>2. Cookie Operations</h3>
+<a href="{{ url_for('set_cookie') }}">Set Cookie</a> | 
+<a href="{{ url_for('get_cookie') }}">Get Cookie</a> | 
+<a href="{{ url_for('remove_cookie') }}">Remove Cookie</a>
+
+<hr>
+
+<h3>3. Message Flashing (Login Test)</h3>
+<form method="POST" action="{{ url_for('login') }}">
+    <input type="text" name="username" placeholder="Username (neural9)" required><br><br>
+    <input type="password" name="password" placeholder="Password (12345)" required><br><br>
+    <button type="submit">Login</button>
 </form>
 
-<hr />
-
-<!-- File Upload Form -->
-<h2>Upload File (Read Excel/Text)</h2>
-<form
-  method="POST"
-  action="{{ url_for('file_upload') }}"
-  enctype="multipart/form-data"
->
-  <input
-    type="file"
-    id="file"
-    name="file"
-    accept=".xlsx, .xls, .txt, .csv"
-    required
-  />
-  <br /><br />
-  <button type="submit" id="upload-btn">Upload & View</button>
-</form>
-
-<hr />
-
-<!-- 3. Excel to CSV Direct Download Form -->
-<h2>Convert Excel to CSV (Direct Download)</h2>
-<form
-  method="POST"
-  action="{{ url_for('convert_csv') }}"
-  enctype="multipart/form-data"
->
-  <input type="file" name="file" accept=".xlsx" required /><br /><br />
-  <input type="submit" value="Convert to CSV" />
-</form>
-
-<hr />
-
-<!-- 4. Excel to CSV via Download Page -->
-<h2>Convert Excel to CSV (Redirect Download Page)</h2>
-<form
-  method="POST"
-  action="{{ url_for('convert_csv_2') }}"
-  enctype="multipart/form-data"
->
-  <input type="file" name="file" accept=".xlsx" required /><br /><br />
-  <input type="submit" value="Convert & Go to Download Page" />
-</form>
-
-<hr />
-
-<!-- 5. JS Fetch Request -->
-<h2>JavaScript JSON Request</h2>
-<button id="post-btn">Send POST Request via JS</button>
-
-<script type="text/javascript">
-  const postBtn = document.getElementById("post-btn");
-  const jsonData = {
-    name: "Mike",
-    greeting: "Hello",
-  };
-
-  postBtn.addEventListener("click", () => {
-    fetch("{{ url_for('handle_post') }}", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(jsonData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        alert("Server Response: " + data.message);
-      })
-      .catch((error) => console.error("Error:", error));
-  });
-</script>
 {% endblock %}

@@ -12,3 +12,43 @@ content %}
 <!-- Dynamic URL Link -->
 <a href="{{ url_for('other') }}">Go to Other Page</a>
 {% endblock %}
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Default Title{% endblock %}</title>
+</head>
+<body>
+    <p>This header navigation will be present on all pages.</p>
+    <hr>
+
+    <!-- Main Content Slot -->
+    {% block content %}
+    {% endblock %}
+</body>
+</html> {% endcomment %}
+
+
+
+{% comment %} 
+
+{% extends 'base.html' %}
+
+{% block title %}Home - Static Files{% endblock %}
+
+{% block content %}
+    <h1>Hello World</h1>
+
+    <!-- Image loaded from static/img/ -->
+    <img src="/img/logo.png" alt="Neural 9 Logo" width="200"><br><br>
+
+    <!-- Custom CSS Class applied -->
+    <p class="special">This paragraph uses custom CSS class '.special'</p>
+
+{% endblock %}
+ {% endcomment %}
+

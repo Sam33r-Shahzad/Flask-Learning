@@ -1,0 +1,22 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Flask App{% endblock %}</title>
+
+    <!-- 2. Link Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- 4. Custom JS -->
+    <script src="/js/hello.js"></script>
+</body>
+</html> {% endcomment %}
+
+
